@@ -19,6 +19,7 @@ class MineSweeper {
     }
 
     init() {
+        this.board = []
         this.generateEmptyBoard()
         this.generateMinesPosition()
         this.insertMines()
