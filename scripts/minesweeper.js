@@ -7,14 +7,14 @@ class Minesweeper {
         this.board = [];
         this.minesPosition = [];
         this.aroundCells = [
-        [-1, -1],
-        [-1, 0],
-        [-1, 1],
-        [0, -1],
-        [0, 1],
-        [1, -1],
-        [1, 0],
-        [1, 1],
+            [-1, -1],
+            [-1, 0],
+            [-1, 1],
+            [0, -1],
+            [0, 1],
+            [1, -1],
+            [1, 0],
+            [1, 1],
         ];
 
         this.init();
@@ -36,10 +36,9 @@ class Minesweeper {
     generateEmptyBoard() {
         for (let i = 0; i < this.boardRowsLength; i++) {
         this.board.push([]);
-
-        for (let j = 0; j < this.boardColumnsLength; j++) {
-            this.board[i][j] = 0;
-        }
+            for (let j = 0; j < this.boardColumnsLength; j++) {
+                this.board[i][j] = 0;
+            }
         }
     }
 
@@ -47,10 +46,9 @@ class Minesweeper {
         while (this.minesPosition.length < this.minesLength) {
         const y = this.getRandomInt(0, this.boardRowsLength);
         const x = this.getRandomInt(0, this.boardColumnsLength);
-
-        if (!this.minesPosition.join(" ").includes(`${y},${x}`)) {
-            this.minesPosition.push([y, x]);
-        }
+            if (!this.minesPosition.join(" ").includes(`${y},${x}`)) {
+                this.minesPosition.push([y, x]);
+            }
         }
     }
 
@@ -68,24 +66,24 @@ class Minesweeper {
 
     updateBoardNumbers() {
         for (let i = 0; i < this.minesPosition.length; i++) {
-        for (let j = 0; j < this.aroundCells.length; j++) {
-            const minePosition = this.minesPosition[i];
-            const spacesAround = this.aroundCells[j];
-            const y = minePosition[0] + spacesAround[0];
-            const x = minePosition[1] + spacesAround[1];
+            for (let j = 0; j < this.aroundCells.length; j++) {
+                const minePosition = this.minesPosition[i];
+                const spacesAround = this.aroundCells[j];
+                const y = minePosition[0] + spacesAround[0];
+                const x = minePosition[1] + spacesAround[1];
 
-            const vouSomarAonde = [y, x];
+                const vouSomarAonde = [y, x];
 
-            if (
-            vouSomarAonde[0] >= 0 &&
-            vouSomarAonde[1] >= 0 &&
-            vouSomarAonde[0] < this.boardRowsLength &&
-            vouSomarAonde[1] < this.boardColumnsLength &&
-            typeof this.board[y][x] === "number"
-            ) {
-            this.board[y][x]++;
+                if (
+                vouSomarAonde[0] >= 0 &&
+                vouSomarAonde[1] >= 0 &&
+                vouSomarAonde[0] < this.boardRowsLength &&
+                vouSomarAonde[1] < this.boardColumnsLength &&
+                typeof this.board[y][x] === "number"
+                ) {
+                this.board[y][x]++;
+                }
             }
-        }
         }
     }
 
@@ -94,18 +92,18 @@ class Minesweeper {
         const row = document.createElement("DIV");
         row.classList.add("row");
 
-        for (let j = 0; j < this.board[i].length; j++) {
-            const container = document.createElement("DIV");
-            container.classList.add("container");
-            const cell = document.createElement("SPAN");
-            cell.classList.add("cell");
-            cell.classList.add("no-show");
+            for (let j = 0; j < this.board[i].length; j++) {
+                const container = document.createElement("DIV");
+                container.classList.add("container");
+                const cell = document.createElement("SPAN");
+                cell.classList.add("cell");
+                cell.classList.add("no-show");
 
-            cell.innerText = this.board[i][j];
-            container.appendChild(cell);
-            row.appendChild(container);
-        }
-
+                cell.innerText = this.board[i][j];
+                container.appendChild(cell);
+                row.appendChild(container);
+            }
+            
         board.appendChild(row);
         }
     }

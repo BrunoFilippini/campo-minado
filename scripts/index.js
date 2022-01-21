@@ -10,14 +10,14 @@ console.log(cells);
 newGame.printBoard(board);
 
 startButton.addEventListener("click", () => {
-  board.innerHTML = "";
+    board.innerHTML = "";
 
-  newGame.init();
-  newGame.printBoard(board);
+    newGame.init();
+    newGame.printBoard(board);
 });
 
 for (let i = 0; i < cells.length; i++) {
-  cells[i].addEventListener("click", () => {
+    cells[i].addEventListener("click", () => {
     cells[i].classList.remove("no-show");
     cells[i].classList.add("show");
   });
